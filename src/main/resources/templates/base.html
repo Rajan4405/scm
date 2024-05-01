@@ -1,0 +1,9 @@
+<div class="fragment" th:fragment="parent(content)">
+  <h1>This is parent</h1>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque facere
+    quidem aperiam optio rem temporibus aut reprehenderit, distinctio accusamus
+    commodi.
+  </p>
+  <div th:replace="${content}"></div>
+</div>

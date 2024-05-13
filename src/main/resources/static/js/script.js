@@ -1,38 +1,56 @@
-console.log("script loading....");
+console.log("Script loaded");
 
-const changeTheme = () => {
-  // set to web page
-  document.querySelector("html").classList.add(currentTheme);
-  // set the listener to change theme button
-  document.querySelector("#theme").addEventListener("click", (event) => {
-    console.log("Button clicked");
-    document.querySelector("html").classList.remove(currentTheme);
+// change theme work
+let currentTheme = getTheme();
+//initial -->
+
+document.addEventListener("DOMContentLoaded", () => {
+  changeTheme();
+});
+
+//TODO:
+function changeTheme() {
+  //set to web page
+
+  changePageTheme(currentTheme, "");
+  //set the listener to change theme button
+  const changeThemeButton = document.querySelector("#theme_change_button");
+
+  changeThemeButton.addEventListener("click", (event) => {
+    let oldTheme = currentTheme;
+
     if (currentTheme === "dark") {
-      // theme will be light
+      //theme ko light
       currentTheme = "light";
     } else {
+      //theme ko dark
       currentTheme = "dark";
     }
 
-    // update on localstorage
-    setTheme(currentTheme);
-    document.querySelector("html").classList.add(currentTheme);
+    changePageTheme(currentTheme, oldTheme);
   });
-};
+}
 
-// set theme to localstorage
-const setTheme = (theme) => {
+//set theme to localstorage
+function setTheme(theme) {
   localStorage.setItem("theme", theme);
-};
+}
 
-// get theme to localstorage
-const getTheme = () => {
+//get theme from localstorage
+function getTheme() {
   let theme = localStorage.getItem("theme");
-  if (theme) return theme;
-  else return "light";
-};
+  return theme ? theme : "light";
+}
 
-let currentTheme = getTheme();
+//change current page theme
+function changePageTheme(theme, oldTheme) {
+  //localstorage mein update karenge
+  setTheme(currentTheme);
+  //remove the current theme
 
-// initial --->
-changeTheme(currentTheme);
+  if (oldTheme) {
+    document.querySelector("html").classList.remove(oldTheme);
+  }
+  //set the current theme
+  document.querySelector("html").classList.add(theme);
+}

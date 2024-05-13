@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+  lang="en"
+  th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}"
+>
+  >
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About</title>
+    <title>About Page</title>
   </head>
   <body>
-    <h1>About Us</h1>
-    <div th:insert="~{base::parent(~{::section})}"></div>
-    <section>
-      <h2>Dynamic Content</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae,
-        omnis.
-      </p>
-      <button>Click On Dynamic Content</button>
-    </section>
+    <div id="content">
+      <h1>Welcome to about page</h1>
+    </div>
+
+    <script>
+      console.log("About Page");
+    </script>
   </body>
 </html>

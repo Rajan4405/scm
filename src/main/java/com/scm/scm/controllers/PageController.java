@@ -69,15 +69,23 @@ public class PageController {
     // userService
 
     // UserForm --> user
-    User user = User.builder()
-        .name(userForm.getName())
-        .email(userForm.getEmail())
-        .password(userForm.getPassword())
-        .about(userForm.getPhoneNumber())
-        .phoneNumber(userForm.getPhoneNumber())
-        .profile(
-            "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.P5sjoKLC37cI8QgqT53VGAHaHa%26pid%3DApi%26h%3D160&f=1&ipt=2e76dd5a8fafb435a5b606eef45e34020c1106fe445f78d2c036f01d5f9548ed&ipo=images")
-        .build();
+    // User user = User.builder()
+    // .name(userForm.getName())
+    // .email(userForm.getEmail())
+    // .password(userForm.getPassword())
+    // .about(userForm.getPhoneNumber())
+    // .phoneNumber(userForm.getPhoneNumber())
+    // .profile(
+    // "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.P5sjoKLC37cI8QgqT53VGAHaHa%26pid%3DApi%26h%3D160&f=1&ipt=2e76dd5a8fafb435a5b606eef45e34020c1106fe445f78d2c036f01d5f9548ed&ipo=images")
+    // .build();
+    User user = new User();
+    user.setName(userForm.getName());
+    user.setEmail(userForm.getEmail());
+    user.setPassword(userForm.getPassword());
+    user.setAbout(userForm.getAbout());
+    user.setPhoneNumber(userForm.getPhoneNumber());
+    user.setProfile(
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.P5sjoKLC37cI8QgqT53VGAHaHa%26pid%3DApi%26h%3D160&f=1&ipt=2e76dd5a8fafb435a5b606eef45e34020c1106fe445f78d2c036f01d5f9548ed&ipo=images");
     User savedUser = userService.saveUser(user);
     System.out.println("savedUser");
     // message = "Registration successful"
